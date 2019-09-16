@@ -75,10 +75,4 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.d("onstop","#####");
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("ondestroy","#####");
-    }
 }
