@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewDatabase"></activity>
+        <activity android:name=".LocationFind"></activity>
     </application>
 
 </manifest>

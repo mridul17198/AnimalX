@@ -17,10 +17,12 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static java.lang.String.*;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText EditName,EditPass;
-    Button Btn,re;
+    Button Btn,re,Loc;
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference Databaselogin=database.getReference("Login");
     @Override
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         EditPass=(EditText) findViewById(R.id.Password);
         Btn=(Button) findViewById(R.id.Submit);
         re=(Button) findViewById(R.id.ReadData);
-
+        Loc=(Button)findViewById(R.id.Location);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, LocationFind.class));
+            }
+        });
+
     }
 
     @Override
