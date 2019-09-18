@@ -22,7 +22,7 @@ import static java.lang.String.*;
 public class MainActivity extends AppCompatActivity {
 
     EditText EditName,EditPass;
-    Button Btn,re,Loc;
+    Button Btn,re,Loc,img;
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference Databaselogin=database.getReference("Login");
     @Override
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Btn=(Button) findViewById(R.id.Submit);
         re=(Button) findViewById(R.id.ReadData);
         Loc=(Button)findViewById(R.id.Location);
+        img=(Button)findViewById(R.id.Image);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, LocationFind.class));
+            }
+        });
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ImageLoad.class));
             }
         });
 
