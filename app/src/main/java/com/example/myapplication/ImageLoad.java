@@ -93,6 +93,12 @@ public class ImageLoad extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent,PICK_IMAGE);
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -107,13 +113,6 @@ public class ImageLoad extends AppCompatActivity {
         {
             mimageuri=data.getData();
             Picasso.with(this).load(mimageuri).into(imageView);
-        }
-    }
-
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent,PICK_IMAGE);
         }
     }
     //protected void onActivityResult(int requestCode, int resultCode, Intent data) {

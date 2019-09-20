@@ -74,17 +74,17 @@ public class Google_map extends FragmentActivity implements OnMapReadyCallback {
 
         Toast.makeText(this, "FetchLastLocation", Toast.LENGTH_SHORT).show();
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .zoom(17)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
-                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
-                .build();
+        //CameraPosition cameraPosition = new CameraPosition.Builder()
+           //     .zoom(17)                   // Sets the zoom
+             //   .bearing(90)                // Sets the orientation of the camera to east
+               // .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+               // .build();
 
         LatLng latLng=new LatLng(currentlocation.getLatitude(),currentlocation.getLongitude());
         MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("I am Here");
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,200));
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+        //googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         googleMap.addMarker(markerOptions);
     }
 
