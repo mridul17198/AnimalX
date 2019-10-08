@@ -130,7 +130,7 @@ public class ImageLoad extends AppCompatActivity {
     {
         if(mimageuri==null)
         {
-            Toast.makeText(this, "No File Selected", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "No File Selected", Toast.LENGTH_SHORT).show();
             StorageReference mountainsRef = mstorage.child("camera.jpg");
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);

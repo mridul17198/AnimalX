@@ -29,8 +29,8 @@ public class ViewDatabase extends AppCompatActivity {
     ArrayList<String> array=new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.view_database_layout);
+        super.onCreate(savedInstanceState);
         mlistview=(ListView)findViewById(R.id.ListView);
         database=FirebaseDatabase.getInstance();
         Databaselogin=database.getReference("Login");
@@ -83,6 +83,7 @@ public class ViewDatabase extends AppCompatActivity {
                 for(DataSnapshot ds:dataSnapshot.getChildren()) {
                    Log.d("Inside_Data","#######");
                     String id = ds.getKey();
+                    Toast.makeText(ViewDatabase.this, id, Toast.LENGTH_SHORT).show();
                     dataSnapshot.getRef().child(id).child("name").setValue("Updated_Value");
                 }
             }

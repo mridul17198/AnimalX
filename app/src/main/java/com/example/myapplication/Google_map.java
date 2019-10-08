@@ -26,10 +26,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.ArrayList;
+
 public class Google_map extends FragmentActivity implements OnMapReadyCallback {
 
     Location currentlocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    ArrayList<LatLng> location_list=new ArrayList<>();
     private static int REQUEST_CODE=101;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,11 +84,17 @@ public class Google_map extends FragmentActivity implements OnMapReadyCallback {
                // .build();
 
         LatLng latLng=new LatLng(currentlocation.getLatitude(),currentlocation.getLongitude());
-        MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("I am Here");
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
-        //googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-        googleMap.addMarker(markerOptions);
+        location_list.add((latLng));
+        location_list.add(new LatLng(12.334343, 33.43434));
+        for(int i=0;i<location_list.size();i++)
+        {
+            MarkerOptions markerOptions=new MarkerOptions().position(location_list.get(i)).title("I am Here");
+            googleMap.animateCamera(CameraUpdateFactory.newLatLng(location_list.get(i)));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location_list.get(i),15));
+            //googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            googleMap.addMarker(markerOptions);
+        }
+
     }
 
     @Override
